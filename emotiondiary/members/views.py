@@ -8,6 +8,6 @@ def index(request):
 
 	context={'test': user[0].extra_data}
 
-	return render(request, 'index.html', context)
+	return render(request, 'emotiondiary.html', context)
 
 
