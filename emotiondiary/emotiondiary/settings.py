@@ -45,6 +45,8 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     #members
     'members',
+    #app 
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -138,3 +140,5 @@ SOCIALACCOUNT_PROVIDERS = \
         'EXCHANGE_TOKEN': True,
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'}}
+
+LOGIN_REDIRECT_URL = "/"
