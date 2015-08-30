@@ -3,7 +3,25 @@
 {% block contents %}
   <div class="container">
     <div class="jumbotron">
-      <div id="calendar"></div>
+      {% if messages|length == 0%}
+        <form method="POST" action="/diary">
+	  {% csrf_token %}
+	  {% for field in form %}
+            {{ field }}
+	  {% endfor %}
+          <button type="submit">Save</button>
+        </form>
+      {% else %}
+        <div id="calendar"></div>
+      {% endif %}
     </div>
   </div>
 {% endblock%}
+
+{% block javscript %}
+  <script src="/static/js/diary.js"></script>
+  <script type="text/javascript">
+    var items = {{ messages|safe }};
+    window.onload = makeCalender(items);
+  </script>
+{% endblock %}

@@ -22,7 +22,7 @@ function makeCalendarHeader() {
   return calendarHeader;
 }
 
-function makeCalendarBody() {
+function makeCalendarBody(items) {
   var calendarBody = '';
   var blankDay = '<td></td>';
 
@@ -48,7 +48,15 @@ function makeCalendarBody() {
     }
     calendarBody += '<td><ul style="list-style:none; margin-bottom: 0px; padding-left: 0px;">';
     calendarBody += '<li style="border-bottom: 1px solid #ddd;">' + date + '</li>';
-    calendarBody += '<li>test</li>';
+    var content = 'Nothing';
+    items.map(function(item){
+      var item = JSON.parse(item);
+      var created = item.created_at.split("-");
+      if(Number(created[2]) === date){
+        content = item.text;
+      };
+    });
+    calendarBody += '<li>' + content + '</li>';
     calendarBody += '</ul></td>';
     calendar.setDate(date + 1);
   }
@@ -60,12 +68,14 @@ function makeCalendarBody() {
       break;
     }
   }
-  calendarBody += '</tr>'
+  calendarBody += '</tr>';
   return calendarBody;
 }
 
-calendarContainer += '<table class="table table-bordered" style="text-align: center;">';
-calendarContainer += makeCalendarHeader(); 
-calendarContainer += makeCalendarBody();
-calendarContainer += '</table>';
-document.getElementById("calendar").innerHTML = calendarContainer;
+function makeCalender(items){
+  calendarContainer += '<table class="table table-bordered" style="text-align: center;">';
+  calendarContainer += makeCalendarHeader(); 
+  calendarContainer += makeCalendarBody(items);
+  calendarContainer += '</table>';
+  document.getElementById("calendar").innerHTML = calendarContainer;
+}
