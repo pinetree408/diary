@@ -24,7 +24,7 @@ function makeCalendarHeader() {
 
 function makeCalendarBody() {
   var calendarBody = '';
-  var blankDay = '<td></td>'
+  var blankDay = '<td></td>';
 
   calendar.setDate(1);    // Initialize the calendar day at '1'
   var weekOfMonthFirstDay = calendar.getDay(); // Returns month's first day's week (0-6)
@@ -46,7 +46,10 @@ function makeCalendarBody() {
     if (week === 0){
       calendarBody += '</tr><tr>';
     }
-    calendarBody += '<td>' + date + '</td>';
+    calendarBody += '<td><ul style="list-style:none; margin-bottom: 0px; padding-left: 0px;">';
+    calendarBody += '<li style="border-bottom: 1px solid #ddd;">' + date + '</li>';
+    calendarBody += '<li>test</li>';
+    calendarBody += '</ul></td>';
     calendar.setDate(date + 1);
   }
 
@@ -61,7 +64,7 @@ function makeCalendarBody() {
   return calendarBody;
 }
 
-calendarContainer += '<table class="table table-bordered" style="text-align: center">';
+calendarContainer += '<table class="table table-bordered" style="text-align: center;">';
 calendarContainer += makeCalendarHeader(); 
 calendarContainer += makeCalendarBody();
 calendarContainer += '</table>';
