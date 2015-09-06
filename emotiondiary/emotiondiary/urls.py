@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from app.views import IndexView
-from diary.views import DiaryView 
+from diary.views import DiaryView, DiaryCreateView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', IndexView.as_view()),
     url(r'^diary$', DiaryView.as_view()),
+    url(r'^diary/create$', DiaryCreateView.as_view()),
 ]
