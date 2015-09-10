@@ -145,7 +145,6 @@ SOCIALACCOUNT_PROVIDERS = \
             'gender',
             'updated_time'],
         'EXCHANGE_TOKEN': True,
-        'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'}}
-
+ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "/"
