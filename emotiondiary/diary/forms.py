@@ -2,7 +2,8 @@
 from django import forms
 from diary import models
 
+
 class MessageForm(forms.ModelForm):
-	class Meta:
-		model = models.Message
-		exclude = ('user',)
+    class Meta:
+        model = models.Message
+        exclude = ('user',)

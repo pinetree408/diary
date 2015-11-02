@@ -3,7 +3,7 @@ from allauth.socialaccount.models import SocialAccount
 
 import json
 
-# Create your models here.
+
 class Message(models.Model):
 
     user = models.ForeignKey(SocialAccount)

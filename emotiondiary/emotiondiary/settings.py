@@ -37,17 +37,17 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #django-allauth
+    # django-allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    #app 
+    # app
     'app',
-    #members
+    # members
     'members',
-    #diary
+    # diary
     'diary',
 )
 
@@ -68,8 +68,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-	    BASE_DIR + '/templates'
-	],
+            BASE_DIR + '/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,22 +129,25 @@ SITE_ID = 2
 
 SOCIALACCOUNT_PROVIDERS = \
     {'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'VERSION': 'v2.4'}}
+        {'METHOD':
+            'oauth2',
+            'SCOPE': [
+                'email',
+                'public_profile'],
+            'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+            'FIELDS': [
+                'id',
+                'email',
+                'name',
+                'first_name',
+                'last_name',
+                'verified',
+                'locale',
+                'timezone',
+                'link',
+                'gender',
+                'updated_time'],
+            'EXCHANGE_TOKEN': True,
+            'VERSION': 'v2.4'}}
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "/"
