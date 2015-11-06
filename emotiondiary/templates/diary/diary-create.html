@@ -3,7 +3,7 @@
 {% block contents %}
   <div class="container">
     <div class="jumbotron">
-      <form method="POST" action="/diary/create">
+      <form method="POST" action="/diary/create/">
         {% csrf_token %}
 	{% for field in form %}
           {{ field }}
@@ -13,11 +13,3 @@
     </div>
   </div>
 {% endblock%}
-
-{% block javscript %}
-  <script src="/static/js/diary.js"></script>
-  <script type="text/javascript">
-    var items = {{ messages|safe }};
-    window.onload = makeCalender(items);
-  </script>
-{% endblock %}

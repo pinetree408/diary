@@ -15,7 +15,7 @@ class DiaryView(ListView):
         user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
         messages_object = Message.objects.filter(user=user)
         if (messages_object.count() == 0):
-            return redirect('/diary/create')
+            return redirect('/diary/create/')
 
         return super(DiaryView, self).dispatch(request, *args, **kwargs)
 
@@ -33,7 +33,7 @@ class DiaryView(ListView):
 class DiaryCreateView(CreateView):
     template_name = "diary/diary-create.html"
     form_class = MessageForm
-    success_url = '/diary'
+    success_url = '/diary/'
 
     def form_valid(self, form):
         user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
