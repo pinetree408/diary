@@ -24,9 +24,10 @@ python manage.py migrate
 
 python manage.py createsuperuser
 ```
-Add Site facebook.com at admin page
-
-Add facebook application at Social applications page
+###Add Site facebook.com at admin page & Add facebook application at Social applications page
+```
+python manage.py shell < facebook.py
+```
 
 ### Running on local
 ```
