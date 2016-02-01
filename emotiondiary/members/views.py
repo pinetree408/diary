@@ -1,5 +1,8 @@
 # Social Account
 from allauth.socialaccount.models import SocialAccount
+# Views
+from members.views import SocialAccountDetailMixin
+from django.views.generic import TemplateView
 
 
 class SocialAccountDetailMixin(object):
@@ -18,3 +21,7 @@ class SocialAccountDetailMixin(object):
             context['profile_image'] = user_profile_image
 
             return context
+
+
+class IndexView(SocialAccountDetailMixin, TemplateView):
+    template_name = "members/index.html"

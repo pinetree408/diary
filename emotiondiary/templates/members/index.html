@@ -1,0 +1,21 @@
+{% extends "emotiondiary/base.html" %}
+
+{% block contents %}
+  <div class="container">
+    <div class="jumbotron">
+      {% if request.user.is_authenticated %}
+        <a href="/accounts/logout/">Logout</a>
+        <img src={{profile_image}} />
+        <h2 class="centerText"> {{ profile.name }}님, EmotionDiary에 오신 것을 환영합니다!</h2>
+        {{ profile.first_name }}
+        {{ profile.last_name }}
+        {{ profile.locale }}
+        {{ profile.gender }}
+        {{ profile.email }}
+      {% else %}
+        <a href="/accounts/facebook/login/" class="pull-right">Login</a>
+        <h2 class="centerText"> EmotionDiary에 오신 것을 환영합니다!</h2>
+      {% endif %}
+    </div>
+  </div>
+{% endblock%}

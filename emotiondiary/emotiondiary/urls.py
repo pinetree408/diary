@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', views.IndexView.as_view()),
     url(r'^diary/', include('diary.urls', namespace='diary')),
+    url(r'^members/', include('members.urls', namespace='members')),
 ]
