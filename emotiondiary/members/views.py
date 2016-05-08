@@ -1,7 +1,6 @@
 # Social Account
 from allauth.socialaccount.models import SocialAccount
 # Views
-from members.views import SocialAccountDetailMixin
 from django.views.generic import TemplateView
 
 
