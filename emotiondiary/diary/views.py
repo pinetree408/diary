@@ -3,11 +3,12 @@ from allauth.socialaccount.models import SocialAccount
 from diary.forms import MessageForm
 from diary.models import Message
 from django.shortcuts import redirect
+from members.views import SocialAccountDetailMixin
 
 import json
 
 
-class DiaryView(ListView):
+class DiaryView(SocialAccountDetailMixin, ListView):
     template_name = "diary/diary.html"
     model = Message
 
@@ -30,7 +31,7 @@ class DiaryView(ListView):
         return context
 
 
-class DiaryCreateView(CreateView):
+class DiaryCreateView(SocialAccountDetailMixin, CreateView):
     template_name = "diary/diary-create.html"
     form_class = MessageForm
     success_url = '/diary/'

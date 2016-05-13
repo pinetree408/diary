@@ -17,6 +17,18 @@
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      {% if request.user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <img class="img-circle" style="padding: 5px 5px;" src={{profile_image}} />
+	  </li>
+          <li>
+            <p class="navbar-text">
+              <a href="/accounts/logout/">Logout</a>
+	    </p>
+          </li>
+        </ul>
+      {% endif %}
     </div><!--/.nav-collapse -->
   </div>
 </nav>
