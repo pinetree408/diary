@@ -1,0 +1,15 @@
+{% extends "emotiondiary/base.html" %}
+
+{% block contents %}
+  <div class="container">
+    <div class="jumbotron">
+      <form method="POST" action="/diary/update/{{ id }}/" >
+        {% csrf_token %}
+	{% for field in form %}
+          {{ field }}
+	{% endfor %}
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+{% endblock%}

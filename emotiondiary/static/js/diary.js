@@ -53,7 +53,7 @@ function makeCalendarBody(items) {
       var item = JSON.parse(item);
       var created = item.created_at.split("-");
       if(Number(created[2]) === date){
-        content = item.text;
+        content = '<a href="/diary/update/' + item.id + '">' + item.text + '</a>';
       };
     });
     calendarBody += '<li>' + content + '</li>';

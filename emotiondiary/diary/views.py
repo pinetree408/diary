@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from allauth.socialaccount.models import SocialAccount
 from diary.forms import MessageForm
 from diary.models import Message
@@ -43,3 +43,27 @@ class DiaryCreateView(SocialAccountDetailMixin, CreateView):
         self.object.save()
 
         return super(DiaryCreateView, self).form_valid(form)
+
+
+class DiaryUpdateView(SocialAccountDetailMixin, UpdateView):
+    template_name = "diary/diary-update.html"
+    model = Message
+    fields = ['text']
+    success_url = '/diary/'
+
+    def get_object(self, queryset=None):
+        obj = self.model.objects.get(id=self.kwargs['id'])
+        return obj
+
+    def get_context_data(self,  **kwargs):
+        context = super(DiaryUpdateView, self).get_context_data(**kwargs)
+        context['id'] = self.kwargs['id']
+
+        return context
+
+    def form_valid(self, form):
+        user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
+	self.object = form.save(commit=False)
+        self.object.save()
+
+        return super(DiaryUpdateView, self).form_valid(form)
