@@ -9,7 +9,6 @@ social_app = SocialApp.objects.create(
     name='',
     client_id='',
     secret='')
-
 social_app.save()
 social_app.sites.add(example_site)
 social_app.sites.add(facebook_site)

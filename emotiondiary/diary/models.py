@@ -8,7 +8,7 @@ class Message(models.Model):
 
     user = models.ForeignKey(SocialAccount)
     text = models.TextField(u"text")
-    created_at = models.DateTimeField(u"created at", auto_now_add=True)
+    created_at = models.DateTimeField(u"created at", auto_now_add=False)
 
     class Meta:
         ordering = ('-id',)

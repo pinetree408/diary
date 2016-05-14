@@ -6,4 +6,4 @@ from diary import models
 class MessageForm(forms.ModelForm):
     class Meta:
         model = models.Message
-        exclude = ('user',)
+        exclude = ('user', 'created_at',)

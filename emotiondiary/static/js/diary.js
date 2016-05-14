@@ -54,8 +54,11 @@ function makeCalendarBody(items) {
       var created = item.created_at.split("-");
       if(Number(created[2]) === date){
         content = '<a href="/diary/update/' + item.id + '">' + item.text + '</a>';
-      };
+      }
     });
+    if (content === 'Nothing'){
+      content = '<a href="/diary/create/' + year + '/' + (month + 1) + '/'+ date +'">' + content + '</a>';
+    }
     calendarBody += '<li>' + content + '</li>';
     calendarBody += '</ul></td>';
     calendar.setDate(date + 1);

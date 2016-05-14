@@ -6,19 +6,11 @@ from django.shortcuts import redirect
 from members.views import SocialAccountDetailMixin
 
 import json
-
+import datetime
 
 class DiaryView(SocialAccountDetailMixin, ListView):
     template_name = "diary/diary.html"
     model = Message
-
-    def dispatch(self, request, *args, **kwargs):
-        user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
-        messages_object = Message.objects.filter(user=user)
-        if (messages_object.count() == 0):
-            return redirect('/diary/create/')
-
-        return super(DiaryView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self,  **kwargs):
         context = super(DiaryView, self).get_context_data(**kwargs)
@@ -36,10 +28,22 @@ class DiaryCreateView(SocialAccountDetailMixin, CreateView):
     form_class = MessageForm
     success_url = '/diary/'
 
+    def get_context_data(self,  **kwargs):
+        context = super(DiaryCreateView, self).get_context_data(**kwargs)
+        context['year'] = self.kwargs['year']
+        context['month'] = self.kwargs['month']
+        context['date'] = self.kwargs['date']
+
+        return context
+
     def form_valid(self, form):
         user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
+        year = int(self.kwargs['year'])
+        month = int(self.kwargs['month'])
+        date = int(self.kwargs['date'])
         self.object = form.save(commit=False)
         self.object.user = user[0]
+        self.object.created_at = datetime.datetime(year, month, date)
         self.object.save()
 
         return super(DiaryCreateView, self).form_valid(form)
@@ -48,7 +52,7 @@ class DiaryCreateView(SocialAccountDetailMixin, CreateView):
 class DiaryUpdateView(SocialAccountDetailMixin, UpdateView):
     template_name = "diary/diary-update.html"
     model = Message
-    fields = ['text']
+    form_class = MessageForm
     success_url = '/diary/'
 
     def get_object(self, queryset=None):
