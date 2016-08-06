@@ -24,7 +24,7 @@ cd emotiondiary
 python manage.py migrate
 
 # Settign django facebook auth
-python manage.py shell < ./facebook.py
+python manage.py shell < ../facebook.py
 
 # Run django Web Server on local
 python manage.py runserver
