@@ -1,4 +1,5 @@
 *.py[cod]
+*.sw[po]
 venv/
 migrations/
 db.*
