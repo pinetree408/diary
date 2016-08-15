@@ -18,7 +18,7 @@ else
 fi
 
 # Go to project folder
-cd emotiondiary
+cd $1
 
 # Migrate django sqlite DB
 python manage.py migrate
