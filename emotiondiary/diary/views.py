@@ -66,7 +66,6 @@ class DiaryUpdateView(SocialAccountDetailMixin, UpdateView):
         return context
 
     def form_valid(self, form):
-        user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
 	self.object = form.save(commit=False)
         self.object.save()
 
