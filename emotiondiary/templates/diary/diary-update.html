@@ -3,6 +3,7 @@
 {% block contents %}
   <div class="container">
     <div class="jumbotron">
+      <h2>{{object.created_at|date:'Y . m . d'}}</h2>
       <form method="POST" action="">
         {% csrf_token %}
 	{% for field in form %}
