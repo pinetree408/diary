@@ -3,6 +3,7 @@
 {% block contents %}
   <div class="container">
     <div class="jumbotron">
+      <h2>{{year}} . {{month}} . {{date}}</h2>
       <form method="POST" action="/diary/create/{{year}}/{{month}}/{{date}}/">
         {% csrf_token %}
 	{% for field in form %}
