@@ -10,9 +10,9 @@ git clone https://github.com/pinetree408/emotiondiary.git
 
 cd emotiondiary
 
-// Setting facebook information(ex. app_secret etc...)
+// Setting facebook information(ex. app_secret etc...) at "info.txt"
 
-bash —rcfile start.sh
+bash —rcfile start.sh emotiondiary
 ```
 
 #License
