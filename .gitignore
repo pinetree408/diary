@@ -1,6 +1,21 @@
-*.py[cod]
-*.sw[po]
+# for vim
+*.sw[pon]
+
+# for python virtualenv
 venv/
+
+# for python
+*.py[cod]
+
+# for django
 migrations/
 db.*
+
+# for node
+node_modules/
+
+# for OSX env
+.DS_Store
+
+# for emotiondiary facebook login setup
 info.txt
