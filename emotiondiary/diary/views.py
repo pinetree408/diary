@@ -8,12 +8,12 @@ from members.views import SocialAccountDetailMixin
 import json
 import datetime
 
-class DiaryView(SocialAccountDetailMixin, ListView):
+class DiaryListView(SocialAccountDetailMixin, ListView):
     template_name = "diary/diary.html"
     model = Message
 
     def get_context_data(self,  **kwargs):
-        context = super(DiaryView, self).get_context_data(**kwargs)
+        context = super(DiaryListView, self).get_context_data(**kwargs)
         user = SocialAccount.objects.filter(user_id=self.request.user.id, provider='facebook')
         messages_object = Message.objects.filter(user=user)
         messages = list(map(lambda message: message.as_dict(), messages_object))
