@@ -1,4 +1,4 @@
-Django==2.2.24
+Django==2.2.27
 django-allauth==0.22.0
 oauthlib==1.0.0
 pep8==1.6.2
